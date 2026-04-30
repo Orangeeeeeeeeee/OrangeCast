@@ -32,10 +32,7 @@ releases/**/*.zip
 releases/**/*.apk
 
 # ===== Sisyphus internal =====
-.sisyphus/boulder.json
-.sisyphus/drafts/
-.sisyphus/evidence/
-.sisyphus/plans/
+.sisyphus/
 
 # ===== Secrets / local =====
 *.env
