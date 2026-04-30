@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- sw480: large phones / small tablets in portrait -->
+    <dimen name="card_padding_h">36dp</dimen>
+    <dimen name="card_padding_v">32dp</dimen>
+    <dimen name="card_max_width">880dp</dimen>
+    <dimen name="card_corner">32dp</dimen>
+
+    <dimen name="left_section_width">240dp</dimen>
+    <dimen name="icon_circle_size">76dp</dimen>
+    <dimen name="icon_size">42dp</dimen>
+
+    <dimen name="text_title">26sp</dimen>
+    <dimen name="text_sub">13sp</dimen>
+    <dimen name="text_label">13sp</dimen>
+    <dimen name="text_ip">24sp</dimen>
+    <dimen name="text_code">52sp</dimen>
+    <dimen name="text_status">13sp</dimen>
+    <dimen name="text_hint">13sp</dimen>
+    <dimen name="text_error_title">26sp</dimen>
+    <dimen name="text_error_msg">15sp</dimen>
+
+    <dimen name="info_block_corner">28dp</dimen>
+    <dimen name="info_block_pad_h">24dp</dimen>
+    <dimen name="info_block_pad_v">18dp</dimen>
+
+    <dimen name="block_gap">16dp</dimen>
+</resources>

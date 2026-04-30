@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">橙子投屏</string>
+
+    <string name="title_pairing">设备配对</string>
+    <string name="badge_wireless">无线连接</string>
+
+    <string name="label_ip">IP 地址</string>
+    <string name="label_port">端口</string>
+    <string name="label_pairing_code">配对码</string>
+    <string name="label_endpoint">连接地址</string>
+
+    <string name="status_waiting">等待 Windows 端连接…</string>
+    <string name="status_connected">已连接，等待投屏…</string>
+    <string name="status_casting">投屏中</string>
+
+    <string name="hint_pairing_code">在 Windows 端输入此码</string>
+    <string name="hint_back_to_retry">按返回键重试</string>
+
+    <string name="error_title">连接失败</string>
+    <string name="placeholder_ip">---.---.---.---</string>
+    <string name="placeholder_code">- - - -</string>
+    <string name="ip_unknown">未知</string>
+
+    <string name="default_port" translatable="false">8765</string>
+</resources>

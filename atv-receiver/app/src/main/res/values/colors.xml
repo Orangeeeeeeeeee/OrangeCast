@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FFEA580C</color>
+    <color name="primary_pressed">#FFC2410C</color>
+    <color name="primary_accent">#FFFB923C</color>
+    <color name="primary_deep">#FF9A3412</color>
+
+    <color name="bg_window">#FFFFFBF5</color>
+
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_muted">#FFFFF7ED</color>
+    <color name="surface_chip">#FFFFEDD5</color>
+    <color name="surface_icon_bg">#FFFED7AA</color>
+
+    <color name="border">#FFFED7AA</color>
+    <color name="border_strong">#FFFDBA74</color>
+    <color name="border_pill">#FFFDBA74</color>
+    <color name="border_button">#FFFB923C</color>
+
+    <color name="text_primary">#FF1C1917</color>
+    <color name="text_secondary">#FF57534E</color>
+    <color name="text_muted">#FFA8A29E</color>
+    <color name="text_footer">#FF78716C</color>
+    <color name="text_on_chip">#FF9A3412</color>
+    <color name="text_on_primary">#FFFFFFFF</color>
+
+    <color name="text_tertiary">#FFA8A29E</color>
+    <color name="bg_window_start">#FFFFFBF5</color>
+    <color name="bg_window_mid">#FFFFFBF5</color>
+    <color name="bg_window_end">#FFFFFBF5</color>
+    <color name="chip_bg">#FFFFFFFF</color>
+    <color name="chip_border">#FFFDBA74</color>
+    <color name="secondary">#FFFB923C</color>
+    <color name="accent">#FFFED7AA</color>
+
+    <color name="success">#FF16A34A</color>
+    <color name="error">#FFDC2626</color>
+</resources>

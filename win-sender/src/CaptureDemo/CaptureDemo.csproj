@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- DXGI/D3D11 via Windows CsWin32 source generator -->
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.106" PrivateAssets="all" />
+    <!-- WASAPI via NAudio (wraps Windows Core Audio APIs) -->
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <!-- FFmpeg bindings for H.264 software encoding -->
+    <PackageReference Include="FFmpeg.AutoGen" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>

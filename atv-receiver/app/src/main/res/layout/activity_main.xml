@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/surfaceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/waitingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_window"
+        android:padding="28dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:paddingStart="@dimen/card_padding_h"
+            android:paddingEnd="@dimen/card_padding_h"
+            android:paddingTop="@dimen/card_padding_v"
+            android:paddingBottom="@dimen/card_padding_v"
+            app:layout_constraintWidth_max="@dimen/card_max_width"
+            app:layout_constraintWidth_default="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <FrameLayout
+                android:id="@+id/iconCircle"
+                android:layout_width="@dimen/icon_circle_size"
+                android:layout_height="@dimen/icon_circle_size"
+                android:background="@drawable/bg_icon_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_tv"
+                    android:contentDescription="@null" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/brandText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/app_name"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/text_title"
+                android:textStyle="bold"
+                android:letterSpacing="0.04"
+                app:layout_constraintStart_toStartOf="@id/iconCircle"
+                app:layout_constraintTop_toBottomOf="@id/iconCircle" />
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/title_pairing"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_status"
+                android:textStyle="bold"
+                android:letterSpacing="0.06"
+                app:layout_constraintStart_toStartOf="@id/iconCircle"
+                app:layout_constraintTop_toBottomOf="@id/brandText" />
+
+            <LinearLayout
+                android:id="@+id/subBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_chip_blue"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_marginTop="14dp"
+                app:layout_constraintStart_toStartOf="@id/iconCircle"
+                app:layout_constraintTop_toBottomOf="@id/titleText">
+
+                <View
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/dot_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/badge_wireless"
+                    android:textColor="@color/text_on_chip"
+                    android:textSize="@dimen/text_sub"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.04" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/leftDivider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/left_section_width" />
+
+            <LinearLayout
+                android:id="@+id/ipBlock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_endpoint_panel"
+                android:paddingStart="@dimen/info_block_pad_h"
+                android:paddingEnd="@dimen/info_block_pad_h"
+                android:paddingTop="@dimen/info_block_pad_v"
+                android:paddingBottom="@dimen/info_block_pad_v"
+                app:layout_constraintStart_toEndOf="@id/leftDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_endpoint"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_label"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.12"
+                    android:textAllCaps="false" />
+
+                <TextView
+                    android:id="@+id/ipText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/placeholder_ip"
+                    android:textColor="@color/primary_deep"
+                    android:textSize="@dimen/text_ip"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:singleLine="true"
+                    android:letterSpacing="0.04"
+                    android:includeFontPadding="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/codeBlock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/block_gap"
+                app:layout_constraintStart_toEndOf="@id/leftDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ipBlock">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_pairing_code"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_label"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.12" />
+
+                <LinearLayout
+                    android:id="@+id/pinChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/pinDigit1"
+                        android:layout_width="@dimen/pin_digit_w"
+                        android:layout_height="@dimen/pin_digit_h"
+                        android:background="@drawable/bg_pin_digit"
+                        android:gravity="center"
+                        android:text="·"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/pin_digit_text"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:includeFontPadding="false" />
+
+                    <Space
+                        android:layout_width="@dimen/pin_digit_gap"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/pinDigit2"
+                        android:layout_width="@dimen/pin_digit_w"
+                        android:layout_height="@dimen/pin_digit_h"
+                        android:background="@drawable/bg_pin_digit"
+                        android:gravity="center"
+                        android:text="·"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/pin_digit_text"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:includeFontPadding="false" />
+
+                    <Space
+                        android:layout_width="@dimen/pin_digit_gap"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/pinDigit3"
+                        android:layout_width="@dimen/pin_digit_w"
+                        android:layout_height="@dimen/pin_digit_h"
+                        android:background="@drawable/bg_pin_digit"
+                        android:gravity="center"
+                        android:text="·"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/pin_digit_text"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:includeFontPadding="false" />
+
+                    <Space
+                        android:layout_width="@dimen/pin_digit_gap"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/pinDigit4"
+                        android:layout_width="@dimen/pin_digit_w"
+                        android:layout_height="@dimen/pin_digit_h"
+                        android:background="@drawable/bg_pin_digit"
+                        android:gravity="center"
+                        android:text="·"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/pin_digit_text"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:includeFontPadding="false" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/pairingCodeText"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    android:text="@string/placeholder_code" />
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/status_waiting"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_status"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/hint_pairing_code"
+                    android:textColor="@color/text_muted"
+                    android:textSize="@dimen/text_hint" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/errorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_window"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:paddingStart="@dimen/card_padding_h"
+            android:paddingEnd="@dimen/card_padding_h"
+            android:paddingTop="@dimen/card_padding_v"
+            android:paddingBottom="@dimen/card_padding_v"
+            app:layout_constraintWidth_max="640dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/errorIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="!"
+                android:textColor="@color/error"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/errorTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/error_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_error_title"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/errorIcon" />
+
+            <TextView
+                android:id="@+id/errorMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_error_msg"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/errorTitle" />
+
+            <TextView
+                android:id="@+id/errorHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/hint_back_to_retry"
+                android:textColor="@color/primary_accent"
+                android:textSize="@dimen/text_hint"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/errorMessage" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

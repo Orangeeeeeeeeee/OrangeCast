@@ -1,0 +1,97 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Platforms>x64</Platforms>
+    <AssemblyName>OrangeCast</AssemblyName>
+    <Product>橙子投屏</Product>
+    <Title>橙子投屏</Title>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PublishSingleFile>true</PublishSingleFile>
+    <!-- Framework-dependent: target machine downloads .NET 8 runtime on first run if missing.
+         Drops OrangeCast.exe from ~192 MB → ~10 MB; FFmpeg DLLs are still shipped alongside. -->
+    <SelfContained>false</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <Version>1.0.3</Version>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="._*" />
+    <Compile Remove="**\._*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Svg" Version="3.4.7" />
+    <PackageReference Include="SIPSorcery" Version="8.0.23" />
+    <PackageReference Include="SIPSorceryMedia.FFmpeg" Version="8.0.12" />
+    <PackageReference Include="SIPSorceryMedia.Encoders" Version="10.0.4" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="Makaretu.Dns.Multicast" Version="0.27.0" />
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.106" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="Serilog" Version="4.0.2" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+  </ItemGroup>
+
+  <!-- Remove duplicate FFmpeg DLLs brought in by SIPSorceryMedia.FFmpeg (v6x/v62 series).
+       We pin FFmpeg.AutoGen 7.0.0 which loads the v61/v59/v5/v8 set below; the newer set is dead weight. -->
+  <Target Name="RemoveExtraFfmpegDlls" AfterTargets="Publish">
+    <ItemGroup>
+      <_ExtraFfmpeg Include="$(PublishDir)avcodec-62.dll;$(PublishDir)avdevice-62.dll;$(PublishDir)avfilter-11.dll;$(PublishDir)avformat-62.dll;$(PublishDir)avutil-60.dll;$(PublishDir)swresample-6.dll;$(PublishDir)swscale-9.dll" />
+    </ItemGroup>
+    <Delete Files="@(_ExtraFfmpeg)" />
+    <!-- Also strip macOS AppleDouble metadata files that sneak in via git on macOS. -->
+    <ItemGroup>
+      <_MacDotFiles Include="$(PublishDir)Assets\icons\._*.svg;$(PublishDir)._*" />
+    </ItemGroup>
+    <Delete Files="@(_MacDotFiles)" />
+  </Target>
+
+  <ItemGroup>
+    <!-- FFmpeg 7.0.x shared DLLs (matches FFmpeg.AutoGen 7.0.0). Flattened next to exe. -->
+    <Content Include="FFmpeg\bin\x64\avcodec-61.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </Content>
+    <Content Include="FFmpeg\bin\x64\avformat-61.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </Content>
+    <Content Include="FFmpeg\bin\x64\avutil-59.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </Content>
+    <Content Include="FFmpeg\bin\x64\swscale-8.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </Content>
+    <Content Include="FFmpeg\bin\x64\swresample-5.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </Content>
+    <!-- Lucide SVG icons rendered by Svg.NET via UI/Controls/IconBox.cs -->
+    <Content Include="Assets\icons\*.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <!-- App icon -->
+    <Content Include="Assets\app.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
