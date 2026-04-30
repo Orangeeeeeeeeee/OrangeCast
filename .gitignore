@@ -34,6 +34,7 @@ releases/**/*.apk
 # ===== Sisyphus internal =====
 .sisyphus/
 docs/
+research/
 
 # ===== Secrets / local =====
 *.env
