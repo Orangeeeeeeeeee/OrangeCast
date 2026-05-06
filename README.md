@@ -5,6 +5,7 @@
 ![platform](https://img.shields.io/badge/Windows-10%2B-blue?logo=windows)
 ![platform](https://img.shields.io/badge/Android-8.0%2B-green?logo=android)
 ![release](https://img.shields.io/github/v/release/Orangeeeeeeeeee/OrangeCast)
+![license](https://img.shields.io/badge/License-GPL--3.0-blue)
 
 ## 功能
 
@@ -44,3 +45,7 @@
 
 - **Windows**：Windows 10 1809+ x64
 - **Android**：Android 8.0+（API 26+），arm / arm64
+
+## License
+
+本项目基于 [GNU General Public License v3.0](LICENSE) 开源。
